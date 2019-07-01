@@ -1,1 +1,1 @@
-# coding-challanges-practice
+# coding-challenges-practice
