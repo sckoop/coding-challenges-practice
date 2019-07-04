@@ -19,7 +19,7 @@ export const numIslandsBFS = (grid) => {
         count++;
       }
       while(queue.length > 0) {
-        const current = queue.pop();
+        const current = queue.shift();
         // None Island elements don't need a further procedure
         if (grid[current.row][current.column] !== '1') continue;
         // we mark an island to water since we don't want to visit it again.
