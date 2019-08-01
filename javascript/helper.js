@@ -35,3 +35,17 @@ export const createTreeFormArray = (data) => {
 
   return tree;
 };
+
+
+export const createListFromArray = (data) => {
+  if (data.length === 0) return null;
+
+  let prevNode = null;
+
+  data.reverse().forEach((value) => {
+    const node = {val: value, next: prevNode};
+    prevNode = node;
+  })
+
+  return prevNode;
+}
