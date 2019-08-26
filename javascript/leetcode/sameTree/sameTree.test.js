@@ -1,4 +1,4 @@
-import {createTreeFormArray} from '../helper';
+import {createTreeFormArray} from '../../helper';
 import {isSameTree} from "./sameTree";
 
 test('Example 1', () => {
