@@ -49,3 +49,20 @@ export const createListFromArray = (data) => {
 
   return prevNode;
 }
+
+export const createArrayFromList = (list) => {
+  const data = [];
+
+  if (!list) {
+    return null
+  }
+
+  while(list.next) {
+    data.push(list.val);
+    list = list.next;
+  }
+
+  data.push(list.val);
+
+  return data;
+}
