@@ -3,38 +3,18 @@
 export const isValidBST = (root) => {
   if (!root) return true;
 
-  const isValidLeft = checkNode(root.left, [root.val], []);
-  if (!isValidLeft) return false;
-
-  return checkNode(root.right, [], [root.val]);
+  return checkNode(root, null, null);
 };
 
-const checkNode = (root, smallerThan, biggerThan) => {
+const checkNode = (root, min, max) => {
   if (!root) return true;
 
-  const isSmaller = smallerThan.reduce((acc, value) => {
-    if (!acc) return false;
-    return acc && value > root.val;
-  }, true);
-  if (!isSmaller) return false;
+  if (min !== null && root.val <= min) return false;
+  if (max !== null && root.val >= max) return false;
 
-  const isBigger = biggerThan.reduce((acc, value) => {
-    if (!acc) return false;
-    return acc && value < root.val;
-  }, true);
-  if (!isBigger) return false;
+  const isLeftTreeValid = checkNode(root.left, min, root.val);
+  if (!isLeftTreeValid) return false;
 
-  const checkLeftTree = checkNode(
-    root.left,
-    [...smallerThan, root.val],
-    biggerThan
-  );
-  if (!checkLeftTree) return false;
-
-  const checkRightTree = checkNode(root.right, smallerThan, [
-    ...biggerThan,
-    root.val,
-  ]);
-
-  return checkRightTree;
+  const isRightTreeValid = checkNode(root.right, root.val, max);
+  return isRightTreeValid;
 };
