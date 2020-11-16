@@ -5,8 +5,8 @@ class Node {
     this.right = null;
   }
 
-  static create(val){
-    return new Node(val);
+  static create(val) {
+    return val === null ? null : new Node(val);
   }
 }
 
@@ -17,8 +17,7 @@ export const createTreeFormArray = (data) => {
   const queue = [];
   queue.push(tree);
 
-
-  while(queue.length > 0) {
+  while (queue.length > 0) {
     const current = queue.shift();
     const left = data.shift();
     const right = data.shift();
@@ -32,10 +31,8 @@ export const createTreeFormArray = (data) => {
     }
   }
 
-
   return tree;
 };
-
 
 export const createListFromArray = (data) => {
   if (data.length === 0) return null;
@@ -43,21 +40,21 @@ export const createListFromArray = (data) => {
   let prevNode = null;
 
   data.reverse().forEach((value) => {
-    const node = {val: value, next: prevNode};
+    const node = { val: value, next: prevNode };
     prevNode = node;
-  })
+  });
 
   return prevNode;
-}
+};
 
 export const createArrayFromList = (list) => {
   const data = [];
 
   if (!list) {
-    return null
+    return null;
   }
 
-  while(list.next) {
+  while (list.next) {
     data.push(list.val);
     list = list.next;
   }
@@ -65,4 +62,4 @@ export const createArrayFromList = (list) => {
   data.push(list.val);
 
   return data;
-}
+};
