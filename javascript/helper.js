@@ -34,6 +34,28 @@ export const createTreeFromArray = (data) => {
   return tree;
 };
 
+export const createArrayFromTree = (tree) => {
+  const array = [];
+  const queue = [tree];
+
+  while (queue.length) {
+    const current = queue.shift();
+    if (current === null) {
+      array.push(null);
+      continue;
+    }
+    array.push(current.val);
+    if (!current.left && !current.right) {
+      continue;
+    }
+
+    queue.push(current.left);
+    queue.push(current.right);
+  }
+
+  return array;
+};
+
 export const createListFromArray = (data) => {
   if (data.length === 0) return null;
 
