@@ -10,7 +10,7 @@ class Node {
   }
 }
 
-export const createTreeFormArray = (data) => {
+export const createTreeFromArray = (data) => {
   if (data.length === 0) return null;
 
   const tree = Node.create(data.shift());
