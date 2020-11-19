@@ -1,5 +1,5 @@
 import {mergeTwoLists} from "./mergeTwoSortedLists";
-import {createListFromArray} from "../../helper";
+import {createListFromArray} from "../../../helper";
 
 test('expected merge', () => {
   const mergedList = mergeTwoLists(
